@@ -12,6 +12,7 @@ class CountryRepository implements Country\CountryRepository
     {
         $this->countries = [];
 
+        $cwd = getcwd();
         chdir(__DIR__);
 
         if (($handle = fopen('../../../../data/countries.csv', 'r')) !== false) {
@@ -26,6 +27,8 @@ class CountryRepository implements Country\CountryRepository
 
             fclose($handle);
         }
+
+        chdir($cwd);
     }
 
     public function all()
